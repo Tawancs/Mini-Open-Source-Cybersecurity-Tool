@@ -1,0 +1,32 @@
+{
+  "DANGEROUS_TAGS": [
+    "script",
+    "iframe",
+    "object",
+    "embed",
+    "applet",
+    "svg",
+    "math",
+    "link",
+    "style",
+    "meta"
+  ],
+  "DANGEROUS_JS": [
+    "alert(",
+    "eval(",
+    "document.cookie",
+    "document.write",
+    "window.location",
+    "settimeout(",
+    "setinterval("
+  ],
+  "XSS_PATTERNS": {
+    "(?i)<\\/?(?:script|iframe|object|embed|svg|body|img|a|link|meta|base|form).*?>": "HTML tag injection",
+    "(?i)javascript:": "JavaScript URI scheme"
+  },
+  "DANGEROUS_URI_SCHEMES": [
+    "javascript:",
+    "vbscript:",
+    "data:"
+  ]
+}

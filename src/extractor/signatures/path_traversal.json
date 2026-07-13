@@ -1,0 +1,12 @@
+{
+  "SENSITIVE_FILES": [
+    "/etc/passwd",
+    "/etc/shadow",
+    "/proc/self/environ",
+    "/root/.ssh",
+    "boot.ini",
+    "win.ini",
+    "system32",
+    ".ssh/id_rsa"
+  ]
+}

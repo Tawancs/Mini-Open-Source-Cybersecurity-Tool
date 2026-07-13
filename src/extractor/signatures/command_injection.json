@@ -1,0 +1,23 @@
+{
+  "COMMANDS": [
+    "ping",
+    "wget",
+    "curl",
+    "nc",
+    "netcat",
+    "bash",
+    "sh",
+    "zsh",
+    "cmd",
+    "powershell",
+    "python",
+    "perl",
+    "php",
+    "ruby",
+    "whoami",
+    "id",
+    "uname",
+    "cat",
+    "ls"
+  ]
+}

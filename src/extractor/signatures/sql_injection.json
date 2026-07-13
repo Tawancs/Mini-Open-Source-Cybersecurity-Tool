@@ -1,0 +1,47 @@
+{
+  "SQL_KEYWORDS": [
+    "SELECT",
+    "UNION",
+    "INSERT",
+    "UPDATE",
+    "DELETE",
+    "DROP",
+    "ALTER",
+    "CREATE",
+    "EXEC",
+    "EXECUTE",
+    "FROM",
+    "WHERE",
+    "ORDER",
+    "GROUP",
+    "HAVING",
+    "TABLE",
+    "INTO",
+    "VALUES",
+    "SET",
+    "AND",
+    "OR",
+    "AS",
+    "BY"
+  ],
+  "CLASSIC_RULES": {
+    "LOW": {
+      "(?i)\\binsert\\s+into\\b": "INSERT INTO",
+      "(?i)\\bdelete\\s+from\\b": "DELETE FROM",
+      "(?i)\\bupdate\\s+\\w+\\s+set\\b": "UPDATE SET"
+    },
+    "MEDIUM": {
+      "(?i)(?:['\"]\\s*--|--\\s)": "SQL comment"
+    },
+    "HIGH": {
+      "(?i)\\bunion\\s+select\\b": "UNION SELECT",
+      "(?i)\\bdrop\\s+table\\b": "DROP TABLE",
+      "(?i)\\bexec\\s+(?:xp_cmdshell|sp_executesql)\\b": "Dangerous Stored Procedure",
+      "(?i)\\bor\\s+['\"]?1['\"]?\\s*=\\s*['\"]?1['\"]?": "Boolean SQL Injection",
+      "(?i)\\band\\s+['\"]?1['\"]?\\s*=\\s*['\"]?1['\"]?": "Boolean SQL Injection",
+      "(?i)\\bsleep\\s*\\(": "Time-based SQL Injection",
+      "(?i)\\bbenchmark\\s*\\(": "Time-based SQL Injection",
+      "(?i)\\bwaitfor\\s+delay\\b": "Time-based SQL Injection"
+    }
+  }
+}
