@@ -1,7 +1,10 @@
 import os
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
 from src.models import AnalysisResultModel
+
+load_dotenv()
 
 PROMPT_TEMPLATE = """You are a senior cybersecurity analyst.
 
