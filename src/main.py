@@ -19,28 +19,30 @@ async def scan_request(request: RequestModel):
         analysis_result = run_detection_engine(request)
         
         # Await the async gemini generation to avoid blocking the server
+        report = None
         if analysis_result.metadata.risk_level in ["HIGH", "CRITICAL"]:
             report = await generate_security_report(analysis_result)
-        else:
-            report = "No AI report generated for LOW/MEDIUM risk. Action: " + analysis_result.metadata.action
         
-        # Save the analysis result inside the 'fastApi-result' directory separated by risk level
+        # Save the analysis result inside the 'fast-api-result' directory separated by risk level
         risk_level = analysis_result.metadata.risk_level
-        save_dir = os.path.join("fastApi-result", risk_level)
+        save_dir = os.path.join("fastapi-result", risk_level)
         os.makedirs(save_dir, exist_ok=True)
         
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = os.path.join(save_dir, f"analysis_{timestamp}.json")
         
-        # Save both raw JSON and the AI Markdown report
+        # Save raw JSON
         with open(filename, "w") as f:
             f.write(analysis_result.model_dump_json(indent=2))
-        with open(filename.replace(".json", ".md"), "w") as f:
-            f.write(report)
+            
+        # Save AI Markdown report only if generated
+        if report:
+            with open(filename.replace(".json", ".md"), "w") as f:
+                f.write(report)
         
         response_data = {
             "analysis_json": analysis_result.model_dump(),
-            "security_report": report
+            "security_report": report if report else "No AI report generated for LOW/MEDIUM risk."
         }
         
         # Return HTTP 403 Forbidden if risk is CRITICAL
