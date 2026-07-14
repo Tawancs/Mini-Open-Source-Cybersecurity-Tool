@@ -1,27 +1,39 @@
 from src.detector.command_injection import detect_command_injection
 from src.models.features import DetectionDetail
 
-def test_detect_ci_medium_confidence():
+def test_detect_ci_low_confidence():
     features = [DetectionDetail(pattern=">", description="shell redirection")]
     result = detect_command_injection(features)
     assert result is not None
     assert result.type == "Command Injection"
     assert 0.0 < result.confidence < 0.4
 
-def test_detect_ci_high_confidence():
-    features = [DetectionDetail(pattern=";", description="shell operator")]
+def test_detect_ci_medium_confidence():
+    features = [
+        DetectionDetail(pattern=";", description="shell operator"),
+        DetectionDetail(pattern=">", description="shell redirection")
+    ]
     result = detect_command_injection(features)
     assert result is not None
     assert 0.4 <= result.confidence < 0.7
 
-def test_detect_ci_critical_confidence():
+def test_detect_ci_high_confidence():
     features = [
-        DetectionDetail(pattern=";", description="shell operator"),
-        DetectionDetail(pattern="cat /etc/passwd", description="dangerous command")
+        DetectionDetail(pattern="`whoami`", description="command substitution")
     ]
     result = detect_command_injection(features)
     assert result is not None
-    assert result.confidence >= 0.7
+    assert 0.7 <= result.confidence < 0.9
+
+
+def test_detect_ci_critical_confidence():
+    features = [
+        DetectionDetail(pattern=";", description="shell operator"),
+        DetectionDetail(pattern="`whoami`", description="command substitution")
+    ]
+    result = detect_command_injection(features)
+    assert result is not None
+    assert result.confidence >= 0.9
 
 def test_detect_ci_empty():
     features = []
