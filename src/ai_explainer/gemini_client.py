@@ -45,6 +45,8 @@ async def generate_security_report(analysis: AnalysisResultModel) -> str:
             model=model_name,
             contents=prompt,
         )
-        return response.text
+        clean_timestamp = analysis.metadata.timestamp.split('.')[0]
+        timestamp_header = f"**Request Arrived At:** `{clean_timestamp}`\n\n"
+        return timestamp_header + response.text
     except Exception as e:
         return f"Error generating report: {str(e)}"
