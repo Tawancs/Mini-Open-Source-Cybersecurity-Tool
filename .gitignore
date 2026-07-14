@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# WAF detection dataset
+WAF_DETECTION_DATASET.jsonl
