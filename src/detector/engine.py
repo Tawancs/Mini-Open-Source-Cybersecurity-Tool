@@ -81,17 +81,25 @@ def run_detection_engine(request: RequestModel) -> AnalysisResultModel:
     if det := detect_command_injection(ci_all): detections.append(det)
     
     risk_level = "LOW"
+    action = "Allow the request."
     if detections:
         max_conf = max(d.confidence for d in detections)
-        if max_conf >= 0.7:
+        if max_conf >= 0.9:
             risk_level = "CRITICAL"
-        elif max_conf >= 0.4:
+            action = "Block the request (HTTP 403 Forbidden)."
+        elif max_conf >= 0.7:
             risk_level = "HIGH"
-        else:
+            action = "Allow the request, log it, and generate an AI report."
+        elif max_conf >= 0.4:
             risk_level = "MEDIUM"
+            action = "Allow the request, log it without generate an Ai report."
+        else:
+            risk_level = "LOW"
+            action = "Allow the request."
 
     metadata = MetadataModel(
         risk_level=risk_level,
+        action=action,
         timestamp=datetime.datetime.now(datetime.timezone.utc).isoformat()
     )
     

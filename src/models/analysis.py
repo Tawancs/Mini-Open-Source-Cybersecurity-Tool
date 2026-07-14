@@ -10,6 +10,7 @@ class DetectionModel(BaseModel):
 
 class MetadataModel(BaseModel):
     risk_level: str
+    action: str
     timestamp: str
 
 class AnalysisResultModel(BaseModel):
