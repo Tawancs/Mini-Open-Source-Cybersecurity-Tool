@@ -10,11 +10,11 @@ def detect_path_traversal(features: List[DetectionDetail]) -> Optional[Detection
     for f in features:
         desc = f.description.lower()
         if "directory traversal" in desc: score += 0.6
-        elif "null byte" in desc: score += 0.8
-        elif "sensitive file" in desc: score += 0.6
+        elif "null byte" in desc: score += 0.5
+        elif "sensitive file" in desc: score += 0.7
         elif "absolute path" in desc: score += 0.2
         elif "unc path" in desc: score += 0.2
-        elif "encoded" in desc: score += 0.4
+        elif "encoded" in desc: score += 0.3
     
     confidence = min(1.0, score)
     patterns = [f"{f.pattern} (in {f.location})" if f.location else f.pattern for f in features]

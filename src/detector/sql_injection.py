@@ -11,8 +11,8 @@ def detect_sqli(features: List[DetectionDetail]) -> Optional[DetectionModel]:
         desc = f.description.lower()
         if "obfuscated" in desc: score += 0.8
         elif "[high]" in desc: score += 0.9
-        elif "[medium]" in desc: score += 0.3
-        elif "[low]" in desc: score += 0.1
+        elif "[medium]" in desc: score += 0.4
+        elif "[low]" in desc: score += 0.2
         elif "keyword" in desc: score += 0.4
     
     confidence = min(1.0, score)
