@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "/download",
+  "params": {
+    "file": "report_2026.pdf"
+  },
+  "headers": {
+    "User-Agent": "curl/7.68.0"
+  },
+  "body": ""
+}

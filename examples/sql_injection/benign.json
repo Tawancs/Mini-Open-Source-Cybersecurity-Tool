@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "url": "/login",
+  "params": {},
+  "headers": {},
+  "body": "{\"username\": \"johndoe\", \"password\": \"secure_password123\"}"
+}

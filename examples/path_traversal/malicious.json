@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "/download",
+  "params": {
+    "file": "../../../../etc/passwd"
+  },
+  "headers": {
+    "User-Agent": "curl/7.68.0"
+  },
+  "body": ""
+}

@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "url": "/submit_comment",
+  "params": {},
+  "headers": {},
+  "body": "This is a wonderful blog post! I really enjoyed it."
+}

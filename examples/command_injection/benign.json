@@ -1,0 +1,9 @@
+{
+  "method": "POST",
+  "url": "/api/ping",
+  "params": {},
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"ip\": \"127.0.0.1\"}"
+}

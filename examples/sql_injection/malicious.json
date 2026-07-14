@@ -1,0 +1,11 @@
+{
+  "method": "GET",
+  "url": "/login",
+  "params": {
+    "username": "admin' OR '1'='1"
+  },
+  "headers": {
+    "User-Agent": "Mozilla/5.0"
+  },
+  "body": ""
+}

