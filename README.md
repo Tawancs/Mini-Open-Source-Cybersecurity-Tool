@@ -87,15 +87,15 @@ python3 run_example.py examples/sql_injection/malicious.json
 
 **Output Terminal:**
 ```text
-[*] Running AI Request Scanner on: examples/sql_injection/malicious.json
+[*] Running AI Request Scanner on: ./examples/sql_injection/malicious.json
 [*] Running Phase 1: Detection Engine...
 [*] Running Phase 2: AI Explanation Engine...
 [+] Success! Results saved to:
-    - result/sql_injection/malicious_analysis.json
-    - result/sql_injection/malicious_report.md
+    - result/sql_injection/CRITICAL/malicious_analysis.json
+    - result/sql_injection/CRITICAL/malicious_report.md
 ```
 
-**Output Report (`result/sql_injection/malicious_report.md`):**
+**Output Report (`result/sql_injection/CRITICAL/malicious_report.md`):**
 *(The AI generates a full markdown report including an Executive Summary, Attack Type, Why it was detected, Potential Impact, Severity, Recommended Mitigations, and Analyst Notes).*
 
 ---
